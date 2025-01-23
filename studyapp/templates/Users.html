@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if messages %}
+        {% for i in messages %}
+            <div class="messages">
+                {{i}}
+            </div>
+        {% endfor %}
+    {% endif %} 
+    <div class="header">
+        <a href="{% url 'AddStudy' %}">Add Study</a>
+        <a href="/logout/">Logout</a>
+    </div>
+    <div class="container">
+            <p class="welcome-message">WELCOME TO STUDY MANAGEMENT {{ Data.first_name }} {{ Data.last_name }}</p>
+            <div class="card-container">
+                {% for i in Object %}
+                    <div class="card">
+                        <p><strong>STUDY NAME:</strong> {{ i.study_name }}</p>
+                        <!-- <p><strong>STUDY DESCRIPTION:</strong> {{ i.study_description }}</p> -->
+                        <div class="card-action">
+                            <a href="{% url 'View' i.study_id %}">View</a>
+                            <a href="/update/{{ i.study_id }}/">Update</a>
+                            <a href="/confirmdelete/{{ i.study_id }}">Delete</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>         
+{% endblock %}

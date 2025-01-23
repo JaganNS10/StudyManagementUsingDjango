@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Management Web Application</title>
+
+    <style>
+        body,html{
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            font-family:Arial, Helvetica, sans-serif;
+            color: #585d74;
+        }
+
+
+
+        .container{
+            width: 90%;
+            max-width: 1200px;
+            margin:20px auto;
+            padding:20px;
+            box-sizing: border-box;
+        }
+        .header{
+            display: flex;
+            position: absolute;
+            right: 40px;
+            text-align: right;
+        }
+        .header a{
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+            white-space: nowrap;
+            border:  1px solid lightslategrey;
+            background-color: lightslategray;
+            color: beige;
+            padding: 15px 30px;
+            border-radius: 15px;
+        }
+        .header a:hover{
+            border:  1px solid black;
+            background-color: black;
+            color: white;
+            transition: 1s ease;
+        }
+        .welcome-message{
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #2d3436;
+        }
+        .card-container{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .card{
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgb(0,0,0,0.1);
+            padding: 30px 100px;
+            max-width: 300px;
+            text-align:center;
+            transition: transform 0.3s,box-shadow 0.3s;
+            cursor: pointer;
+            margin-top: 40px;
+        }
+        .card:hover{
+            transform:translateY(-5px);
+            box-shadow: 0 6px 12px rgb(0,0,0,0.15);
+        }
+        .card p{
+            margin: 10px 0;
+            font-size: 1rem;
+            color: indianred;
+            text-transform: capitalize;
+            font-weight: bold;
+
+        }
+        .card strong{
+            color:cadetblue;
+        }
+
+        .card-action{
+            display: flex;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .card-action a{
+            text-decoration: none;
+            padding: 8px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 0.9rem;   
+            background-color:#375BDC;
+            color:#ffffff; 
+            font-weight: bold;
+        }
+        .card-action a:hover{
+            background-color:darkcyan;
+            color:beige;
+            transition: 0.5s ease;
+        }
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px 40px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+        form div{
+            margin: 20px 0;
+        }
+
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+       
+        input[type="text"],input[type='email'],input[type='password']{
+
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bolder;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        
+        .cancel{
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .cancel a{
+            text-decoration: none;
+            border: 1px solid black;
+            background-color: black;
+            color: white;
+            border-radius: 15px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        .cancel a:hover{
+            border: 1px solid lightslategray;
+            background-color:#2d3436;
+            transition: 0.5s ease;
+        }
+        .messages{
+            color: green;
+            font-size: large;
+            text-align: center;
+
+        }
+        .atag{
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+            width: 100%;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            font-weight: bolder;
+        }
+        .del{
+            border: 1px solid #007bff;
+            background-color:#007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-left:150px;
+            margin-top: 20px;
+        }
+        .del:hover{
+            border: 1px solid #375BDC;
+            background-color:#375BDC;
+            transition: all 0.5s ease;
+        }
+         .containermain{
+            width: 90%;
+            max-width: 1200px;
+            margin:90px auto;
+            padding:40px 100px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgb(0,0,0,0.1);
+        }
+        .auth-links {
+            position: absolute;
+            top: 20px;
+            right: 60px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-links a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border: 1px solid black;
+            background-color: black;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+
+        .auth-links a:hover {
+            background-color: #2c3e50;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: small;
+            color: #555;
+            line-height: 1.6;
+            letter-spacing: 0.8px;
+            text-align:center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        ul li {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        ul li strong {
+            color: #007bff; /* Blue color for important actions */
+        }
+
+        .highlight {
+            color: #27ae60; /* Green color for a fresh look */
+            font-weight: bold;
+        }
+
+        .feature-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding-top: 40px;
+        }
+
+        .feature-list li {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+
+        .feature-list li span {
+            font-size: 24px;
+            padding-bottom: 15px;
+            display: block;
+            color: #f39c12; /* Yellow for icons */
+        }
+
+        .feature-list li p {
+            font-size:13px;
+            color: #333;
+            font-weight: bold;
+        }
+        </style>
+</head>
+<body>
+
+    {% block content %}
+
+        <div class="auth-links">
+            <a href="{% url 'Register'%}">Register</a>
+            <a href="/login/">Login</a>
+        </div>
+        <div class="containermain">
+            <h1>
+                Welcome to <span class="highlight">Study Management Web Application</span>
+            </h1>
+            <p>
+                Efficiently manage your research studies with easy-to-use <span class="highlight">CRUD Operations</span>
+            </p>
+            <ul class="feature-list"> 
+                <li>
+                    <span>
+                        💰
+                    </span>
+                    <strong>
+                        About this web Application
+                    </strong> 
+                    <p>
+                        This application allows users to register,login,and manage study records with ease,you can add,view,edit and delete studies all in one place.keep track of your research
+                    </p>    
+                </li>
+                <li>
+                    <span>
+                        📊
+                    </span>
+                    <strong>
+                        Study Details
+                    </strong>
+                    <p >
+                        Keep track of your study name,study phase,sponser name and description in an organized format.
+                    </p>
+                </li>
+                <li>
+                    <span>
+                        📅
+                    </span>
+                    <strong>
+                        Secure Access
+                    </strong>
+                    <p>
+                        Register and log in to securely manage your studies with session-based authentication
+                    </p>
+
+                </li>
+            </ul>
+        </div>
+    {% endblock %}
+</body>
+</html>

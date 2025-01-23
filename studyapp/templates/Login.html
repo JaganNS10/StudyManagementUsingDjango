@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if messages %}
+        {% for i in messages %}
+            <div class="messages">
+                {{i}}
+            </div>
+        {% endfor %}
+    {% endif %} 
+    <h2 style="text-align: center;">
+        Login Here! To See You StudyPage
+    </h2>
+
+    <form action="" method="post" >
+        {% csrf_token %}
+
+        {{ form }}
+        <input type="submit" name="Login" value="Login">
+
+        <a href="{% url 'Register' %}" class="atag">
+            Don't have an account? Register!
+        </a>
+    </form>
+    <div class="cancel">
+        <a href="{% url 'HomePage' %}">Back To Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form action="/delete/{{Object.study_id}}/" method="post">
+        {% csrf_token %}
+        <a class="atag">
+            Are You Sure Want to Delete this! StudyName:{{Object.study_name}}
+        </a>
+        <button type="submit" class="del">
+            Delete
+        </button>
+    </form>
+    <div class="cancel">
+        <a href="{% url 'Users' %}">Back To MainPage</a>
+    </div>
+</div>
+{% endblock %}

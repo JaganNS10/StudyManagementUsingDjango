@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p class="welcome-message">Details Of {{ Object.study_name }}</p>
+<div class="card-container">
+        <div class="card">
+            <p><strong>STUDY NAME:</strong> {{ Object.study_name }}</p>
+            <p><strong>STUDY DESCRIPTION:</strong> {{ Object.study_description }}</p>
+            <p><strong>STUDY PHASE:</strong> {{ Object.study_phase }}</p>
+            <p><strong>SPONSER NAME:</strong> {{ Object.sponser_name }}</p>
+        </div>
+</div>
+<div class="cancel">
+    <a href="{% url 'Users' %}">Back To MainPage</a>
+</div>
+{% endblock %}

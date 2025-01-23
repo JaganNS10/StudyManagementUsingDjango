@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+
+    {{ usersstudymodelform }}
+
+    <input type="submit" name="Addstudy" value="submit">
+</form>
+<div class="cancel">
+    <a href="{% url 'Users' %}">Back To MainPage</a>
+</div>
+{% endblock %}
